@@ -25,3 +25,4 @@ dist-ssr
 Cloudiply Color References.pdf
 
 package-lock.json
+.env
