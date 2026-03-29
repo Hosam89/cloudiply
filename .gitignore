@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 Cloudiply Color References.pdf
 
-package-lock.json
 .env
