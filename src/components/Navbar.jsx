@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useI18n } from "../i18n";
-import { useTheme } from "../theme";
+import { useTheme } from "../theme/useTheme";
+import logoDark from "../assets/logo_dark.svg";
+import logoLight from "../assets/logo.svg";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -20,9 +22,11 @@ function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-accent to-purple-400 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-accent/30">
-            C
-          </div>
+          <img
+            src={theme === "dark" ? logoDark : logoLight}
+            alt="Cloudiply logo"
+            className="w-9 h-9"
+          />
           <span className="text-xl font-bold tracking-tight text-heading">
             Cloudiply
           </span>
