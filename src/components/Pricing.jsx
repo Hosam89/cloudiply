@@ -1,6 +1,6 @@
 import { useI18n } from "../i18n";
 
-const planHighlighted = [false, false, true];
+const planHighlighted = [false, true, false];
 
 function CheckIcon() {
   return (
