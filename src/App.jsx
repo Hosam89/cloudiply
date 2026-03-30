@@ -4,7 +4,7 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
-import { useI18n } from "./i18n";
+import { useI18n } from "./i18n/useI18n";
 import { useTheme } from "./theme/useTheme";
 import logoDark from "./assets/logo_dark.svg";
 import logoLight from "./assets/logo.svg";
@@ -19,25 +19,25 @@ function App() {
 
       {/* Divider */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-divider to-transparent" />
+        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
       </div>
 
       <About />
 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-divider to-transparent" />
+        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
       </div>
 
       <Services />
 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-divider to-transparent" />
+        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
       </div>
 
       <Pricing />
 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-divider to-transparent" />
+        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
       </div>
 
       <Contact />

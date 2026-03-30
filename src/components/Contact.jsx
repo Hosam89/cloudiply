@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useI18n } from "../i18n";
+import { useI18n } from "../i18n/useI18n";
 
 function Contact() {
   const { t } = useI18n();
@@ -24,7 +24,10 @@ function Contact() {
     try {
       const res = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(formData),
       });
       if (res.ok) {
@@ -161,11 +164,12 @@ function Contact() {
                 disabled={loading}
                 className="w-full py-3 px-6 bg-accent hover:bg-accent-hover text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-accent/30 hover:shadow-accent/50 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? t.contact.sending ?? "Sending…" : t.contact.submit}
+                {loading ? (t.contact.sending ?? "Sending…") : t.contact.submit}
               </button>
               {error && (
                 <p className="text-red-500 text-sm text-center">
-                  {t.contact.errorText ?? "Something went wrong. Please try again."}
+                  {t.contact.errorText ??
+                    "Something went wrong. Please try again."}
                 </p>
               )}
             </form>
