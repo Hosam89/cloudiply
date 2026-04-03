@@ -1,13 +1,11 @@
+import { Link } from "react-router";
 import { useI18n } from "../i18n/useI18n";
 
 function Hero() {
   const { t } = useI18n();
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-16 px-6 overflow-hidden"
-    >
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-16 px-6 overflow-hidden">
       {/* Background Monolith Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Skewed panel — top-right architectural accent */}
@@ -53,14 +51,14 @@ function Hero() {
 
         {/* CTA cluster */}
         <div className="flex flex-col sm:flex-row items-center gap-6 w-full lg:justify-center">
-          <a
-            href="#pricing"
+          <Link
+            to="/pricing"
             className="btn-primary monolith-glow w-full sm:w-auto px-10 py-5 text-center"
           >
             {t.hero.ctaPricing}
-          </a>
-          <a
-            href="#services"
+          </Link>
+          <Link
+            to="/services"
             className="btn-ghost w-full sm:w-auto px-10 py-5 flex items-center justify-center gap-2"
           >
             {t.hero.ctaLearnMore}
@@ -77,7 +75,7 @@ function Hero() {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* Stats bar — gap-1 + p-px so parent bg bleeds through as hairline separators */}

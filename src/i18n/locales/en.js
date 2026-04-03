@@ -2,8 +2,10 @@ const en = {
   nav: {
     home: "Home",
     about: "About Us",
+    company: "Company",
     services: "Services",
     pricing: "Pricing",
+    work: "Work",
     contact: "Contact",
     cta: "Get Started",
   },
@@ -84,7 +86,16 @@ const en = {
     subtitle: "Choose the plan that best fits your business.",
     recommended: "Recommended",
     choosePlan: "Choose Plan",
-    monthly: "monthly",
+    monthly: "/ mo.",
+    stats: [
+      { label: "Performance", value: "99.9%", sub: "Uptime Guarantee" },
+      { label: "Security", value: "SSL+", sub: "End-to-End Encryption" },
+      { label: "Hosting", value: "CLOUD", sub: "AWS Infrastructure" },
+      { label: "Support", value: "24/7", sub: "Technical Support" },
+    ],
+    ctaTitle: "Not What You're Looking For?",
+    ctaSubtitle: "Contact us for a tailored enterprise solution.",
+    ctaButton: "Custom Offer",
     plans: [
       {
         name: "Startup",
@@ -129,6 +140,49 @@ const en = {
           "Conversion Optimization",
           "3–4 minor content updates per month",
         ],
+      },
+    ],
+  },
+
+  work: {
+    badge: "Showcase Portfolio",
+    titleStart: "Our Work — ",
+    titleHighlight: "Digital Masterpieces",
+    subtitle:
+      "A glimpse into our recent successes and technical innovations. We transform complex requirements into precise digital experiences.",
+    ctaTitle: "Ready for your own masterpiece?",
+    ctaSubtitle:
+      "Let's push the boundaries of what's technically possible and turn your vision into reality.",
+    ctaButton: "Request Project",
+    projects: [
+      {
+        title: "E-Commerce Evolution",
+        description:
+          "Maximising conversion rate through ultra-performant architecture. A scalable solution for modern e-commerce focused on sales growth.",
+        tags: ["Next.js", "Tailwind"],
+        cta: "View Case Study",
+      },
+      {
+        title: "SaaS Dashboard",
+        description:
+          "Visualising complex data streams with surgical precision. Real-time analytics for enterprise clients.",
+        tags: ["React"],
+        cta: "Case Study",
+      },
+      {
+        title: "FinTech Portal",
+        description:
+          "Highly secure banking infrastructure combined with seamless UX design for private wealth management.",
+        tags: ["Security+", "Node.js"],
+        cta: "Case Study",
+      },
+      {
+        title: "Luxury Brand Experience",
+        description:
+          "High-end aesthetics meets interactive storytelling. An immersive web experience for a global fashion brand.",
+        tags: ["GSAP", "Three.js"],
+        cta: "View Case Study",
+        stack: "GSAP / Three.js",
       },
     ],
   },

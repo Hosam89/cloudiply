@@ -2,8 +2,10 @@ const de = {
   nav: {
     home: "Home",
     about: "Über uns",
+    company: "Unternehmen",
     services: "Services",
     pricing: "Preise",
+    work: "Referenzen",
     contact: "Kontakt",
     cta: "Jetzt starten",
   },
@@ -86,7 +88,17 @@ const de = {
     subtitle: "Wählen Sie den Plan, der am besten zu Ihrem Unternehmen passt.",
     recommended: "Empfohlen",
     choosePlan: "Plan wählen",
-    monthly: "monatlich",
+    monthly: "/ Monat",
+    stats: [
+      { label: "Performance", value: "99.9%", sub: "Uptime Garantie" },
+      { label: "Sicherheit", value: "SSL+", sub: "End-to-End Encryption" },
+      { label: "Hosting", value: "CLOUD", sub: "AWS Infrastruktur" },
+      { label: "Support", value: "24/7", sub: "Technischer Support" },
+    ],
+    ctaTitle: "Nicht das Richtige dabei?",
+    ctaSubtitle:
+      "Kontaktieren Sie uns für eine maßgeschneiderte Enterprise-Lösung.",
+    ctaButton: "Individuelles Angebot",
     plans: [
       {
         name: "Startup",
@@ -131,6 +143,49 @@ const de = {
           "Conversion‑Optimierung",
           "3–4 kleine Content‑Änderungen/Monat",
         ],
+      },
+    ],
+  },
+
+  work: {
+    badge: "Showcase Portfolio",
+    titleStart: "Unsere Referenzen — ",
+    titleHighlight: "Digitale Meisterwerke",
+    subtitle:
+      "Ein Einblick in unsere jüngsten Erfolge und technischen Innovationen. Wir transformieren komplexe Anforderungen in präzise digitale Erlebnisse.",
+    ctaTitle: "Bereit für Ihr eigenes Meisterwerk?",
+    ctaSubtitle:
+      "Lassen Sie uns gemeinsam die Grenzen des technisch Machbaren verschieben und Ihre Vision in Realität umwandeln.",
+    ctaButton: "Projekt anfragen",
+    projects: [
+      {
+        title: "E-Commerce Evolution",
+        description:
+          "Maximierung der Conversion-Rate durch ultra-performante Architektur. Eine skalierbare Lösung für den modernen Online-Handel mit Fokus auf Sales-Growth.",
+        tags: ["Next.js", "Tailwind"],
+        cta: "Case Study ansehen",
+      },
+      {
+        title: "SaaS Dashboard",
+        description:
+          "Visualisierung komplexer Datenströme mit chirurgischer Präzision. Real-time Analytics für Enterprise-Kunden.",
+        tags: ["React"],
+        cta: "Case Study",
+      },
+      {
+        title: "FinTech Portal",
+        description:
+          "Hochsichere Banking-Infrastruktur kombiniert mit einem nahtlosen UX-Design für private Vermögensverwaltung.",
+        tags: ["Security+", "Node.js"],
+        cta: "Case Study",
+      },
+      {
+        title: "Luxury Brand Experience",
+        description:
+          "High-End Ästhetik trifft auf interaktives Storytelling. Eine immersive Web-Experience für eine globale Modemarke.",
+        tags: ["GSAP", "Three.js"],
+        cta: "Case Study ansehen",
+        stack: "GSAP / Three.js",
       },
     ],
   },

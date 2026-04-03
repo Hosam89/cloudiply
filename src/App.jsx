@@ -1,7 +1,9 @@
+import { Routes, Route, useLocation } from "react-router";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
 import Services from "./components/Services";
+import Work from "./components/Work";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
 import { useI18n } from "./i18n/useI18n";
@@ -9,40 +11,28 @@ import { useTheme } from "./theme/useTheme";
 import logoDark from "./assets/logo_dark.svg";
 import logoLight from "./assets/logo.svg";
 
-function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function Layout() {
   const { t } = useI18n();
   const { theme } = useTheme();
   return (
     <div className="min-h-screen">
+      <ScrollToTop />
       <Navbar />
-      <Hero />
-
-      {/* Divider */}
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
-      </div>
-
-      <About />
-
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
-      </div>
-
-      <Services />
-
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
-      </div>
-
-      <Pricing />
-
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="h-px bg-linear-to-r from-transparent via-divider to-transparent" />
-      </div>
-
-      <Contact />
-
-      {/* Footer */}
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       <footer className="border-t border-nav-border px-4 py-10">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
@@ -59,6 +49,10 @@ function App() {
       </footer>
     </div>
   );
+}
+
+function App() {
+  return <Layout />;
 }
 
 export default App;

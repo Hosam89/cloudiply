@@ -4,7 +4,7 @@ function About() {
   const { t } = useI18n();
 
   return (
-    <section id="about" className="px-4 py-16 sm:py-24">
+    <section className="px-4 py-16 sm:py-24">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text content */}

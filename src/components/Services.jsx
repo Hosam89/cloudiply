@@ -1,121 +1,169 @@
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "motion";
 import { useI18n } from "../i18n/useI18n";
+import servicesBg from "../assets/services.png";
 
-const serviceIcons = [
-  <svg
-    className="w-7 h-7"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={1.5}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-    />
-  </svg>,
-  <svg
-    className="w-7 h-7"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={1.5}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-    />
-  </svg>,
-  <svg
-    className="w-7 h-7"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={1.5}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M13 10V3L4 14h7v7l9-11h-7z"
-    />
-  </svg>,
-  <svg
-    className="w-7 h-7"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={1.5}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-    />
-  </svg>,
-  <svg
-    className="w-7 h-7"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={1.5}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-    />
-  </svg>,
-  <svg
-    className="w-7 h-7"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={1.5}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-    />
-  </svg>,
+const serviceConfig = [
+  { icon: "terminal", status: "System Status: Active" },
+  { icon: "query_stats", status: "Metric: Authority" },
+  { icon: "speed", status: "Execution: < 100ms" },
+  { icon: "insights", status: "Data Level: Precise" },
+  { icon: "ads_click", status: "Goal: Max ROI" },
+  { icon: "gavel", status: "Standard: GDPR Compliance" },
 ];
 
 function Services() {
   const { t } = useI18n();
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const cards = gridRef.current?.querySelectorAll(".service-card");
+    if (!cards?.length) return;
+
+    const DURATION = 2.4;
+    const controls = animate(
+      cards,
+      {
+        borderColor: [
+          "rgba(59,73,76,0.15)",
+          "#00e5ff",
+          "#00e5ff",
+          "rgba(59,73,76,0.15)",
+        ],
+        boxShadow: [
+          "0 0 0px 0px rgba(0,229,255,0)",
+          "0 0 28px 8px rgba(0,229,255,0.6)",
+          "0 0 28px 8px rgba(0,229,255,0.6)",
+          "0 0 0px 0px rgba(0,229,255,0)",
+        ],
+      },
+      {
+        duration: DURATION,
+        delay: stagger(DURATION),
+        repeat: Infinity,
+        // wait for all remaining cards to finish before looping back
+        repeatDelay: (cards.length - 1) * DURATION,
+        ease: "ease-in-out",
+      },
+    );
+
+    return () => controls.stop();
+  }, []);
 
   return (
-    <section id="services" className="px-4 py-16 sm:py-24">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="inline-block px-3 py-1 mb-4 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium">
-            {t.services.badge}
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-heading mb-4">
+    <section className="px-8 py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto">
+        {/* ── Header ── */}
+        <header className="mb-20 border-l-2 border-accent pl-8">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-8 h-px bg-accent" />
+            <span className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-accent">
+              {t.services.badge}
+            </span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-heading mb-6 uppercase leading-[0.9]">
             {t.services.titleStart}
-            <span className="text-accent">{t.services.titleHighlight}</span>
-            {t.services.titleEnd}
+            <br />
+            <span
+              className="text-transparent"
+              style={{ WebkitTextStroke: "1px #00e5ff" }}
+            >
+              {t.services.titleHighlight}
+            </span>
+            {t.services.titleEnd || ""}
           </h2>
-          <p className="text-muted max-w-xl mx-auto">{t.services.subtitle}</p>
-        </div>
+          <p className="max-w-xl text-muted text-lg leading-relaxed">
+            {t.services.subtitle}
+          </p>
+        </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* ── Bento grid ── */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
+        >
           {t.services.items.map((service, i) => (
             <div
               key={service.title}
-              className="group rounded-2xl bg-glass border border-glass-border backdrop-blur-md p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-surface-hover hover:border-accent/30"
+              className="service-card group bg-glass border border-surface-border/50 p-10 hover:bg-surface transition-all duration-300 relative overflow-hidden"
             >
-              <div className="w-14 h-14 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5 transition-colors group-hover:bg-accent/25">
-                {serviceIcons[i]}
+              {/* Animated left accent line */}
+              <div className="absolute top-0 left-0 w-[2px] h-0 bg-accent group-hover:h-full transition-all duration-500" />
+
+              <div className="mb-8">
+                <span className="material-symbols-outlined text-accent text-[2rem] leading-none select-none">
+                  {serviceConfig[i].icon}
+                </span>
               </div>
-              <h3 className="text-lg font-bold text-heading mb-2">
+
+              <h3 className="text-heading font-bold text-xl mb-4 tracking-tight uppercase">
                 {service.title}
               </h3>
-              <p className="text-muted text-sm leading-relaxed">
+              <p className="text-muted text-sm leading-relaxed mb-8">
                 {service.description}
               </p>
+
+              <div className="flex items-center gap-2 mt-auto">
+                <span className="text-[0.625rem] font-bold uppercase tracking-widest text-accent">
+                  {serviceConfig[i].status}
+                </span>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* ── Featured tech stack ── */}
+        <div className="mt-24 grid grid-cols-1 lg:grid-cols-12 items-stretch gap-0 border border-surface-border">
+          <div className="lg:col-span-7 bg-glass p-12 lg:p-20">
+            <h3 className="text-3xl font-black text-heading mb-8 tracking-tight uppercase leading-none">
+              Technology Stack &amp; Innovation
+            </h3>
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <div className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-accent mb-2">
+                  Frameworks
+                </div>
+                <p className="text-muted text-sm">
+                  Next.js, Tailwind CSS, Headless Architectures
+                </p>
+              </div>
+              <div>
+                <div className="text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-accent mb-2">
+                  Cloud
+                </div>
+                <p className="text-muted text-sm">
+                  AWS, Vercel, Edge Computing
+                </p>
+              </div>
+            </div>
+            <div className="mt-12">
+              <button className="group/btn flex items-center gap-4 cursor-pointer">
+                <span className="h-px w-12 bg-accent group-hover/btn:w-20 transition-all duration-300" />
+                <span className="text-[0.6875rem] font-bold uppercase tracking-[0.3em] text-heading">
+                  Full Stack Overview
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 relative min-h-[260px] bg-surface-lowest overflow-hidden">
+            {/* Background image */}
+            <img
+              src={servicesBg}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 contrast-125"
+            />
+            {/* Cyan tint overlay */}
+            <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
+            <div className="absolute bottom-8 left-8 p-6 bg-glass backdrop-blur-md border-l-2 border-accent">
+              <div className="text-2xl font-black text-heading tracking-tight">
+                99.9%
+              </div>
+              <div className="text-[0.625rem] font-bold uppercase tracking-widest text-accent">
+                Uptime Guarantee
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
