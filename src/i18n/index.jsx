@@ -1,19 +1,20 @@
-import { useState } from "react";
 import { I18nContext } from "./context";
 import de from "./locales/de";
 import en from "./locales/en";
 
 const translations = { de, en };
 
+// Resolve to "de" or "en" based on the browser's preferred language
+function getBrowserLang() {
+  const browserLang = navigator.language || navigator.languages?.[0] || "de";
+  return browserLang.toLowerCase().startsWith("de") ? "de" : "en";
+}
+
+const lang = getBrowserLang();
+
 export function I18nProvider({ children }) {
-  const [lang, setLang] = useState("de");
-
-  function toggleLang() {
-    setLang((prev) => (prev === "de" ? "en" : "de"));
-  }
-
   return (
-    <I18nContext.Provider value={{ lang, toggleLang, t: translations[lang] }}>
+    <I18nContext.Provider value={{ lang, t: translations[lang] }}>
       {children}
     </I18nContext.Provider>
   );

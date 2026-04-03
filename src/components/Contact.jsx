@@ -30,11 +30,10 @@ function Contact() {
         },
         body: JSON.stringify(formData),
       });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
+      if (!res.ok) {
         setError(true);
       }
+      setSubmitted(true);
     } catch {
       setError(true);
     } finally {
